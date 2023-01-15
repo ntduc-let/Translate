@@ -10,6 +10,19 @@ dependencyResolutionManagement {
     repositories {
         google()
         mavenCentral()
+        jcenter()
+        maven { url 'https://jitpack.io' }
+        maven { url "https://android-sdk.is.com" }
+        maven { url "https://artifact.bytedance.com/repository/pangle" }
+        maven { url 'https://artifacts.applovin.com/android' }
+        maven { url "https://dl-maven-android.mintegral.com/repository/mbridge_android_sdk_oversea" }
+        maven {
+            url "${artifactory_contextUrl}"
+            credentials {
+                username = "${artifactory_user}"
+                password = "${artifactory_password}"
+            }
+        }
     }
 }
 rootProject.name = "BaseProject"
