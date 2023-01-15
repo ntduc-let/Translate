@@ -1,0 +1,12 @@
+net.grobas.view
+attr poly_border
+attr poly_border_color
+attr poly_border_width
+attr poly_corner_radius
+attr poly_rotation_angle
+attr poly_shadow
+attr poly_shadow_color
+attr poly_vertices
+attr polygonImageViewStyle
+styleable PolygonImageView poly_border poly_border_color poly_border_width poly_corner_radius poly_rotation_angle poly_shadow poly_shadow_color poly_vertices
+styleable PolygonImageViewTheme polygonImageViewStyle

@@ -1,0 +1,13 @@
+R_DEF: Internal format may change without notice
+local
+attr? poly_border
+attr? poly_border_color
+attr? poly_border_width
+attr? poly_corner_radius
+attr? poly_rotation_angle
+attr? poly_shadow
+attr? poly_shadow_color
+attr? poly_vertices
+attr? polygonImageViewStyle
+styleable PolygonImageView poly_vertices poly_rotation_angle poly_corner_radius poly_border poly_border_color poly_border_width poly_shadow poly_shadow_color
+styleable PolygonImageViewTheme polygonImageViewStyle

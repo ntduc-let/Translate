@@ -21,15 +21,25 @@ android {
         minSdk 24
         targetSdk 33
         versionCode 1
-        versionName "1.0"
+        versionName "1.0.0"
 
-        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        def date = new Date().format('dd.MM.yyyy')
+        def hour = new Date().format('HH')
+        def minutes = new Date().format('mm')
+        archivesBaseName = "AppName_V${versionName}_${date}_${hour}h${minutes}"
     }
 
     buildTypes {
+        debug {
+            resValue "string", "ads_app_id", "ADS_APP_ID"
+            resValue "string", "applovin_sdk_key", "APPLOVIN_SDK_KEY"
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
+
+            resValue "string", "ads_app_id", "ADS_APP_ID"
+            resValue "string", "applovin_sdk_key", "APPLOVIN_SDK_KEY"
         }
     }
     compileOptions {
@@ -55,6 +65,10 @@ dependencies {
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.5.1'
 
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation project(path: ':RecyclerViewSticky')
+    implementation project(path: ':ViewPager2Transformer')
+
     //Hilt
     def hiltVersion = "2.44.2"
     implementation "com.google.dagger:hilt-android:$hiltVersion"
@@ -76,6 +90,13 @@ dependencies {
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.5.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
+    //Navigation
+    def nav_version = "2.5.3"
+    implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
+    implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
+    implementation("androidx.navigation:navigation-compose:$nav_version")
+
     //lottie
     implementation 'com.airbnb.android:lottie:5.2.0'
 
@@ -83,9 +104,19 @@ dependencies {
     api 'com.github.bumptech.glide:glide:4.14.2'
     annotationProcessor 'com.github.bumptech.glide:compiler:4.14.2'
 
-    //Leak Canary
+    //Permission: https://github.com/guolindev/PermissionX
+    implementation 'com.guolindev.permissionx:permissionx:1.7.1'
+
+    //Json: https://github.com/square/moshi
+    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+
+    //sdp-ssp
+    implementation 'com.intuit.sdp:sdp-android:1.1.0'
+    implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    //Leak Canary: https://square.github.io/leakcanary/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
 
-    //ADS
+    //ADS: https://gitlab.com/proxglobal/android/proxlib/-/tree/multiple_mediation
 //    implementation "prox-lib:prox-utils-multiple-mediation:1.0.9.9"
 }

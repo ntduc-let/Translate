@@ -27,3 +27,6 @@ dependencyResolutionManagement {
 }
 rootProject.name = "BaseProject"
 include ':app'
+include ':RecyclerViewSticky'
+include ':ViewPager2Transformer'
+include ':polygonimageview'
