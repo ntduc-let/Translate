@@ -50,6 +50,7 @@ android {
         jvmTarget = '1.8'
     }
     buildFeatures {
+        viewBinding = true
         dataBinding true
     }
 }
@@ -109,6 +110,13 @@ dependencies {
 
     //Json: https://github.com/square/moshi
     implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
+    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
+
+    //retrofit
+    implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
+
+    //http3
+    implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.9'
 
     //sdp-ssp
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
