@@ -61,6 +61,7 @@ dependencies {
     implementation 'androidx.appcompat:appcompat:1.6.0'
     implementation 'com.google.android.material:material:1.7.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
+    implementation 'androidx.recyclerview:recyclerview:1.2.1'
 
     testImplementation 'junit:junit:4.13.2'
     androidTestImplementation 'androidx.test.ext:junit:1.1.5'
@@ -121,6 +122,20 @@ dependencies {
     //sdp-ssp
     implementation 'com.intuit.sdp:sdp-android:1.1.0'
     implementation 'com.intuit.ssp:ssp-android:1.1.0'
+
+    //base
+    implementation "com.github.skydoves:bindables:1.1.0"
+    implementation("com.github.skydoves:transformationlayout:1.1.1")
+
+    //testing
+    testImplementation "org.junit.jupiter:junit-jupiter-engine:5.7.0"
+    testImplementation "io.mockk:mockk:1.10.5"
+    androidTestImplementation "org.assertj:assertj-core:3.19.0"
+    androidTestImplementation "androidx.test.espresso:espresso-intents:3.5.1"
+    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-test:1.6.4"
+    implementation "androidx.arch.core:core-testing:2.1.0"
+    implementation "androidx.test.espresso:espresso-idling-resource:3.5.1"
+    implementation "androidx.test.espresso:espresso-contrib:3.5.1"
 
     //Leak Canary: https://square.github.io/leakcanary/
     debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'

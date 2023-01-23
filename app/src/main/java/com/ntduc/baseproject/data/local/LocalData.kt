@@ -5,9 +5,11 @@ import android.content.SharedPreferences
 import com.ntduc.baseproject.constant.FAVOURITES_KEY
 import com.ntduc.baseproject.constant.SHARED_PREFERENCES_FILE_NAME
 import com.ntduc.baseproject.data.Resource
+import com.ntduc.baseproject.data.dto.files.Files
 import com.ntduc.baseproject.data.dto.login.LoginRequest
 import com.ntduc.baseproject.data.dto.login.LoginResponse
 import com.ntduc.baseproject.data.error.PASS_WORD_ERROR
+import com.ntduc.baseproject.utils.file.getFiles
 import javax.inject.Inject
 
 /**
@@ -63,6 +65,11 @@ class LocalData @Inject constructor(val context: Context) {
         editor.apply()
         val isSuccess = editor.commit()
         return Resource.Success(isSuccess)
+    }
+
+    fun requestAllFiles(types: List<String>): Resource<Files> {
+        val baseFiles = context.getFiles(types = types)
+        return Resource.Success(Files(baseFiles))
     }
 }
 

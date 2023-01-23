@@ -1,22 +1,24 @@
 package com.ntduc.baseproject.data.dto.base
 
-import com.ntduc.baseproject.data.dto.base.BaseFile
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
 
+@Parcelize
 open class BaseVideo(
-  id: Long? = null,
-  title: String? = null,
-  displayName: String? = null,
-  mimeType: String? = null,
-  size: Long? = null,
-  dateAdded: Long? = null,
-  dateModified: Long? = null,
-  data: String? = null,
-  var height: Long? = null,
-  var width: Long? = null,
-  var album: String? = null,
-  var artist: String? = null,
-  var duration: Long? = null,
-  var bucketID: Long? = null,
-  var bucketDisplayName: String? = null,
-  var resolution: String? = null
-) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data)
+    override var id: Long? = null,
+    override var title: String? = null,
+    override var displayName: String? = null,
+    override var mimeType: String? = null,
+    override var size: Long? = null,
+    override var dateAdded: Long? = null,
+    override var dateModified: Long? = null,
+    override var data: String? = null,
+    open var height: Long? = null,
+    open var width: Long? = null,
+    open var album: String? = null,
+    open var artist: String? = null,
+    open var duration: Long? = null,
+    open var bucketID: Long? = null,
+    open var bucketDisplayName: String? = null,
+    open var resolution: String? = null
+) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data), Parcelable

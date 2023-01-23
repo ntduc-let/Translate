@@ -1,7 +1,7 @@
 package com.ntduc.baseproject.ui.base
 
-import androidx.lifecycle.ViewModel
 import com.ntduc.baseproject.usecase.errors.ErrorManager
+import com.skydoves.bindables.BindingViewModel
 import javax.inject.Inject
 
 
@@ -10,7 +10,7 @@ import javax.inject.Inject
  */
 
 
-abstract class BaseViewModel : ViewModel() {
+abstract class BaseViewModel : BindingViewModel() {
     /**Inject Singleton ErrorManager
      * Use this errorManager to get the Errors
      */

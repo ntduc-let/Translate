@@ -1,12 +1,16 @@
 package com.ntduc.baseproject.data.dto.base
 
+import android.os.Parcelable
+import kotlinx.parcelize.Parcelize
+
+@Parcelize
 open class BaseFile(
-  var id: Long? = null,
-  var title: String? = null,
-  var displayName: String? = null,
-  var mimeType: String? = null,
-  var size: Long? = null,
-  var dateAdded: Long? = null,
-  var dateModified: Long? = null,
-  var data: String? = null
-)
+    open var id: Long? = null,
+    open var title: String? = null,
+    open var displayName: String? = null,
+    open var mimeType: String? = null,
+    open var size: Long? = null,
+    open var dateAdded: Long? = null,
+    open var dateModified: Long? = null,
+    open var data: String? = null
+) : Parcelable

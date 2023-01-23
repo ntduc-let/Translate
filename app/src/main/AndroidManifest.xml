@@ -2,6 +2,15 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:tools="http://schemas.android.com/tools">
 
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_MEDIA_IMAGES"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_VIDEO"/>
+    <uses-permission android:name="android.permission.READ_MEDIA_AUDIO"/>
+
+    <uses-permission
+        android:name="android.permission.WRITE_EXTERNAL_STORAGE"
+        tools:ignore="ScopedStorage" />
+
     <application
         android:name=".App"
         android:allowBackup="true"
@@ -16,32 +25,36 @@
         android:usesCleartextTraffic="true"
         tools:targetApi="31">
         <activity
-            android:name=".ui.splash.SplashActivity"
-            android:exported="true">
+            android:name=".ui.component.detail.DetailActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.component.main.MainActivity"
+            android:exported="false" />
+        <activity
+            android:name=".ui.component.splash.SplashActivity"
+            android:exported="true"
+            android:theme="@style/SplashTheme">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
-        </activity>
-
-        <!--ADS-->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.APPLICATION_ID"-->
-        <!--            android:value="@string/ads_app_id" />-->
-        <!--        <meta-data-->
-        <!--            android:name="applovin.sdk.key"-->
-        <!--            android:value="@string/applovin_sdk_key" />-->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.AD_MANAGER_APP"-->
-        <!--            android:value="true"/>-->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION"-->
-        <!--            android:value="true"/>-->
-        <!--        <meta-data-->
-        <!--            android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING"-->
-        <!--            android:value="true"/>-->
-
+        </activity> <!-- ADS -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.APPLICATION_ID" -->
+        <!-- android:value="@string/ads_app_id" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="applovin.sdk.key" -->
+        <!-- android:value="@string/applovin_sdk_key" /> -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.AD_MANAGER_APP" -->
+        <!-- android:value="true"/> -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.flag.OPTIMIZE_INITIALIZATION" -->
+        <!-- android:value="true"/> -->
+        <!-- <meta-data -->
+        <!-- android:name="com.google.android.gms.ads.flag.OPTIMIZE_AD_LOADING" -->
+        <!-- android:value="true"/> -->
         <provider
             android:name="androidx.core.content.FileProvider"
             android:authorities="${applicationId}.provider"
@@ -51,6 +64,7 @@
                 android:name="android.support.FILE_PROVIDER_PATHS"
                 android:resource="@xml/paths" />
         </provider>
+
         <meta-data
             android:name="preloaded_fonts"
             android:resource="@array/preloaded_fonts" />

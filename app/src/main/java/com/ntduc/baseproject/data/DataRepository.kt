@@ -1,5 +1,6 @@
 package com.ntduc.baseproject.data
 
+import com.ntduc.baseproject.data.dto.files.Files
 import com.ntduc.baseproject.data.remote.RemoteData
 import com.ntduc.baseproject.data.dto.frames.DataFrames
 import com.ntduc.baseproject.data.dto.login.LoginRequest
@@ -66,6 +67,12 @@ class DataRepository @Inject constructor(private val remoteRepository: RemoteDat
     override suspend fun requestFrames(): Flow<Resource<DataFrames>> {
         return flow {
             emit(remoteRepository.requestFrames())
+        }.flowOn(ioDispatcher)
+    }
+
+    override suspend fun requestAllFiles(types: List<String>): Flow<Resource<Files>> {
+        return flow<Resource<Files>> {
+            emit(localRepository.requestAllFiles(types))
         }.flowOn(ioDispatcher)
     }
 }
