@@ -3,7 +3,7 @@ package com.ntduc.baseproject.data.dto.frames
 import android.os.Parcelable
 import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
-import kotlinx.android.parcel.Parcelize
+import kotlinx.parcelize.Parcelize
 
 /**
  * Created by TruyenDev on 29/10/2022.

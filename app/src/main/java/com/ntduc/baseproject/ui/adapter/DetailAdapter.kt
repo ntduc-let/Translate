@@ -1,4 +1,4 @@
-package com.ntduc.baseproject.ui.component.detail
+package com.ntduc.baseproject.ui.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context

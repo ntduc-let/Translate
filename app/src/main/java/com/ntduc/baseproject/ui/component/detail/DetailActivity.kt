@@ -8,6 +8,7 @@ import com.ntduc.baseproject.R
 import com.ntduc.baseproject.data.Resource
 import com.ntduc.baseproject.data.dto.files.Files
 import com.ntduc.baseproject.databinding.ActivityDetailBinding
+import com.ntduc.baseproject.ui.adapter.DetailAdapter
 import com.ntduc.baseproject.ui.base.BaseActivity
 import com.ntduc.baseproject.utils.observe
 import com.ntduc.baseproject.utils.view.gone
