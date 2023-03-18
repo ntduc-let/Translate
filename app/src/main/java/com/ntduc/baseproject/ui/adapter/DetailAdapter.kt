@@ -11,7 +11,6 @@ import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
-import androidx.recyclerview.widget.RecyclerView.NO_POSITION
 import com.ntduc.baseproject.R
 import com.ntduc.baseproject.constant.FileTypeExtension
 import com.ntduc.baseproject.data.dto.base.BaseFile
@@ -40,19 +39,6 @@ class DetailAdapter(
     inner class DocumentViewHolder constructor(
         private val binding: ItemDocumentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
-
-        init {
-            binding.root.setOnClickListener {
-                val position = bindingAdapterPosition.takeIf { it != NO_POSITION }
-                    ?: return@setOnClickListener
-                val currentClickedAt = SystemClock.elapsedRealtime()
-                if (currentClickedAt - onClickedAt > binding.transformationLayout.duration) {
-                    Log.d("ntduc_debug", "click: ${getItem(position).title}")
-//                    DetailActivity.startActivity(binding.transformationLayout, getItem(position))
-                    onClickedAt = currentClickedAt
-                }
-            }
-        }
 
         fun bindDocument(baseFile: BaseFile) {
             when (FileTypeExtension.getTypeFile(baseFile.data!!)) {

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<layout xmlns:app="http://schemas.android.com/apk/res-auto">
+<layout>
 
     <ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:tools="http://schemas.android.com/tools"
@@ -13,76 +13,40 @@
             android:layout_gravity="center"
             android:orientation="vertical">
 
-            <com.skydoves.transformationlayout.TransformationLayout
-                android:id="@+id/transFile"
+            <Button
+                android:id="@+id/getAllFile"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:transformation_duration="550">
+                android:text="Get All File"
+                android:textAllCaps="false" />
 
-                <Button
-                    android:id="@+id/getAllFile"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get All File"
-                    android:textAllCaps="false" />
-            </com.skydoves.transformationlayout.TransformationLayout>
-
-            <com.skydoves.transformationlayout.TransformationLayout
-                android:id="@+id/transDocument"
+            <Button
+                android:id="@+id/getAllDocument"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:transformation_duration="550">
+                android:text="Get All Document"
+                android:textAllCaps="false" />
 
-                <Button
-                    android:id="@+id/getAllDocument"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get All Document"
-                    android:textAllCaps="false" />
-            </com.skydoves.transformationlayout.TransformationLayout>
-
-            <com.skydoves.transformationlayout.TransformationLayout
-                android:id="@+id/transAudio"
+            <Button
+                android:id="@+id/getAllAudio"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:transformation_duration="550">
+                android:text="Get All Audio"
+                android:textAllCaps="false" />
 
-                <Button
-                    android:id="@+id/getAllAudio"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get All Audio"
-                    android:textAllCaps="false" />
-
-            </com.skydoves.transformationlayout.TransformationLayout>
-
-            <com.skydoves.transformationlayout.TransformationLayout
-                android:id="@+id/transImage"
+            <Button
+                android:id="@+id/getAllImage"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:transformation_duration="550">
+                android:text="Get All Image"
+                android:textAllCaps="false" />
 
-                <Button
-                    android:id="@+id/getAllImage"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get All Image"
-                    android:textAllCaps="false" />
-            </com.skydoves.transformationlayout.TransformationLayout>
-
-            <com.skydoves.transformationlayout.TransformationLayout
-                android:id="@+id/transVideo"
+            <Button
+                android:id="@+id/getAllVideo"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                app:transformation_duration="550">
-
-                <Button
-                    android:id="@+id/getAllVideo"
-                    android:layout_width="match_parent"
-                    android:layout_height="wrap_content"
-                    android:text="Get All Video"
-                    android:textAllCaps="false" />
-            </com.skydoves.transformationlayout.TransformationLayout>
+                android:text="Get All Video"
+                android:textAllCaps="false" />
 
         </LinearLayout>
     </ScrollView>

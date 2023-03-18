@@ -138,7 +138,6 @@ dependencies {
 
     //base
     implementation "com.github.skydoves:bindables:1.1.0"
-    implementation("com.github.skydoves:transformationlayout:1.1.1")
 
     //testing
     testImplementation "org.junit.jupiter:junit-jupiter-engine:5.9.1"

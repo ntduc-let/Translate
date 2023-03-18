@@ -1,6 +1,5 @@
 package com.ntduc.baseproject.ui.component.detail
 
-import android.os.Bundle
 import android.util.Log
 import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
@@ -13,7 +12,6 @@ import com.ntduc.baseproject.ui.base.BaseActivity
 import com.ntduc.baseproject.utils.observe
 import com.ntduc.baseproject.utils.view.gone
 import com.ntduc.baseproject.utils.view.visible
-import com.skydoves.transformationlayout.TransformationCompat.onTransformationEndContainerApplyParams
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -32,11 +30,6 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
     private val viewModel: DetailViewModel by viewModels()
     private lateinit var detailAdapter: DetailAdapter
     private var type: Int = ALL_FILE
-
-    override fun onCreate(savedInstanceState: Bundle?) {
-        onTransformationEndContainerApplyParams(this)
-        super.onCreate(savedInstanceState)
-    }
 
     override fun onResume() {
         super.onResume()
