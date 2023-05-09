@@ -9,7 +9,6 @@ import com.ntduc.baseproject.data.DataRepositorySource
 import com.ntduc.baseproject.data.Resource
 import com.ntduc.baseproject.data.dto.base.BaseFile
 import com.ntduc.baseproject.ui.base.BaseViewModel
-import com.ntduc.baseproject.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
 import javax.inject.Inject
@@ -26,17 +25,16 @@ class DetailViewModel @Inject constructor(
     fun requestAllFiles(type: Int) {
         viewModelScope.launch {
             filesLiveDataPrivate.value = Resource.Loading()
-            wrapEspressoIdlingResource {
-                val types = when (type) {
-                    DetailActivity.ALL_DOCUMENT -> listOf(*FileType.DOCUMENT)
-                    DetailActivity.ALL_AUDIO -> listOf(*FileType.AUDIO)
-                    DetailActivity.ALL_IMAGE -> listOf(*FileType.IMAGE)
-                    DetailActivity.ALL_VIDEO -> listOf(*FileType.VIDEO)
-                    else -> listOf(*FileType.ALL)
-                }
-                repository.requestAllFiles(types).collect{
-                    filesLiveDataPrivate.value = it
-                }
+
+            val types = when (type) {
+                DetailActivity.ALL_DOCUMENT -> listOf(*FileType.DOCUMENT)
+                DetailActivity.ALL_AUDIO -> listOf(*FileType.AUDIO)
+                DetailActivity.ALL_IMAGE -> listOf(*FileType.IMAGE)
+                DetailActivity.ALL_VIDEO -> listOf(*FileType.VIDEO)
+                else -> listOf(*FileType.ALL)
+            }
+            repository.requestAllFiles(types).collect {
+                filesLiveDataPrivate.value = it
             }
         }
     }

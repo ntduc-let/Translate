@@ -27,7 +27,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "DATN File Manager"
+rootProject.name = "Base Project"
 include ':app'
 include ':RecyclerViewSticky'
 include ':ViewPager2Transformer'
