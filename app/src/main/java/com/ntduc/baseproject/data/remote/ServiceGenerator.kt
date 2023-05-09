@@ -1,6 +1,6 @@
 package com.ntduc.baseproject.data.remote
 
-import androidx.databinding.ktx.BuildConfig
+import com.ntduc.baseproject.BuildConfig
 import com.squareup.moshi.Moshi
 import com.ntduc.baseproject.data.remote.moshiFactories.MyKotlinJsonAdapterFactory
 import com.ntduc.baseproject.constant.BASE_URL
