@@ -55,51 +55,39 @@ object FileType {
   val AUDIO = arrayOf(
     *AUDIO_MP3, *AUDIO_M4A, *AUDIO_AMR, *AUDIO_OGG, *AUDIO_AAC
   )
-  
   val DOCUMENT_PDF = arrayOf(
     "pdf"
   )
-  
   val DOCUMENT_TXT = arrayOf(
     "txt"
   )
-  
   val DOCUMENT_DOC = arrayOf(
     "doc", "docx"
   )
-  
   val DOCUMENT_XLS = arrayOf(
-    "xls", "xlsx"
+    "xls", "xlsx", "csv"
   )
-  
   val DOCUMENT_PPT = arrayOf(
     "ppt", "pptx"
   )
-  
   val DOCUMENT = arrayOf(
     *DOCUMENT_PDF, *DOCUMENT_TXT, *DOCUMENT_DOC, *DOCUMENT_XLS, *DOCUMENT_PPT
   )
-  
   val COMPRESSED_ZIP = arrayOf(
     "zip"
   )
-  
   val COMPRESSED_7ZIP = arrayOf(
     "7z"
   )
-  
   val COMPRESSED_RAR = arrayOf(
     "rar"
   )
-  
   val COMPRESSED = arrayOf(
     *COMPRESSED_ZIP, *COMPRESSED_7ZIP, *COMPRESSED_RAR
   )
-  
   val APK = arrayOf(
     "apk"
   )
-  
   val ALL = arrayOf(
     *IMAGE, *VIDEO, *AUDIO, *DOCUMENT, *COMPRESSED, *APK
   )

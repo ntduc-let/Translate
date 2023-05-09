@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ntduc.baseproject.constant.FileType
 import com.ntduc.baseproject.data.DataRepositorySource
 import com.ntduc.baseproject.data.Resource
-import com.ntduc.baseproject.data.dto.files.Files
+import com.ntduc.baseproject.data.dto.base.BaseFile
 import com.ntduc.baseproject.ui.base.BaseViewModel
 import com.ntduc.baseproject.utils.wrapEspressoIdlingResource
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -20,14 +20,14 @@ class DetailViewModel @Inject constructor(
 ) : BaseViewModel() {
 
     @VisibleForTesting(otherwise = VisibleForTesting.PRIVATE)
-    val filesLiveDataPrivate = MutableLiveData<Resource<Files>>()
-    val filesLiveData: LiveData<Resource<Files>> get() = filesLiveDataPrivate
+    val filesLiveDataPrivate = MutableLiveData<Resource<List<BaseFile>>>()
+    val filesLiveData: LiveData<Resource<List<BaseFile>>> get() = filesLiveDataPrivate
 
-    fun requestAllFiles(type: Int){
+    fun requestAllFiles(type: Int) {
         viewModelScope.launch {
             filesLiveDataPrivate.value = Resource.Loading()
             wrapEspressoIdlingResource {
-                val types = when(type){
+                val types = when (type) {
                     DetailActivity.ALL_DOCUMENT -> listOf(*FileType.DOCUMENT)
                     DetailActivity.ALL_AUDIO -> listOf(*FileType.AUDIO)
                     DetailActivity.ALL_IMAGE -> listOf(*FileType.IMAGE)

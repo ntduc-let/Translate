@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ntduc.baseproject.R
 import com.ntduc.baseproject.data.Resource
-import com.ntduc.baseproject.data.dto.files.Files
+import com.ntduc.baseproject.data.dto.base.BaseFile
 import com.ntduc.baseproject.databinding.ActivityDetailBinding
 import com.ntduc.baseproject.ui.adapter.DetailAdapter
 import com.ntduc.baseproject.ui.base.BaseActivity
@@ -42,8 +42,7 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         detailAdapter = DetailAdapter(this)
         binding.rcv.apply {
             adapter = detailAdapter
-            layoutManager =
-                LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
+            layoutManager = LinearLayoutManager(this@DetailActivity, LinearLayoutManager.VERTICAL, false)
         }
     }
 
@@ -58,13 +57,13 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         type = intent.getIntExtra(TYPE_FILE, ALL_FILE)
     }
 
-    private fun handleListFile(status: Resource<Files>) {
+    private fun handleListFile(status: Resource<List<BaseFile>>) {
         when (status) {
             is Resource.Loading -> {
                 showLoadingView()
             }
             is Resource.Success -> status.data?.let {
-                bindListFile(files = it)
+                bindListFile(list = it)
             }
             is Resource.DataError -> {
                 status.errorCode?.let { Log.d("ntduc_debug", "handleHighlightsList: Error " + it) }
@@ -72,16 +71,16 @@ class DetailActivity : BaseActivity<ActivityDetailBinding>(R.layout.activity_det
         }
     }
 
-    private fun bindListFile(files: Files) {
+    private fun bindListFile(list: List<BaseFile>) {
         binding.loading.gone()
-        if (files.list.isEmpty()) {
+        if (list.isEmpty()) {
             binding.empty.visible()
             binding.rcv.gone()
         } else {
             binding.empty.gone()
             binding.rcv.visible()
         }
-        detailAdapter.submitList(files.list)
+        detailAdapter.submitList(list)
     }
 
     private fun showLoadingView() {

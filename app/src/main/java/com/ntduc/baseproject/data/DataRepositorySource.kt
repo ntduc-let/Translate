@@ -1,10 +1,7 @@
 package com.ntduc.baseproject.data
 
-import com.ntduc.baseproject.data.dto.files.Files
+import com.ntduc.baseproject.data.dto.base.BaseFile
 import com.ntduc.baseproject.data.dto.frames.DataFrames
-import com.ntduc.baseproject.data.dto.login.LoginRequest
-import com.ntduc.baseproject.data.dto.login.LoginResponse
-import com.ntduc.baseproject.data.dto.recipes.Recipes
 import kotlinx.coroutines.flow.Flow
 
 /**
@@ -12,11 +9,6 @@ import kotlinx.coroutines.flow.Flow
  */
 
 interface DataRepositorySource {
-    suspend fun requestRecipes(): Flow<Resource<Recipes>>
-    suspend fun doLogin(loginRequest: LoginRequest): Flow<Resource<LoginResponse>>
-    suspend fun addToFavourite(id: String): Flow<Resource<Boolean>>
-    suspend fun removeFromFavourite(id: String): Flow<Resource<Boolean>>
-    suspend fun isFavourite(id: String): Flow<Resource<Boolean>>
     suspend fun requestFrames(): Flow<Resource<DataFrames>>
-    suspend fun requestAllFiles(types: List<String>): Flow<Resource<Files>>
+    suspend fun requestAllFiles(types: List<String>): Flow<Resource<List<BaseFile>>>
 }
