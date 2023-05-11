@@ -28,8 +28,6 @@ class DetailAdapter(
     val context: Context
 ) : BindingListAdapter<BaseFile, DetailAdapter.DocumentViewHolder>(diffUtil) {
 
-    private var onClickedAt = 0L
-
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentViewHolder =
         parent.binding<ItemDocumentBinding>(R.layout.item_document).let(::DocumentViewHolder)
 

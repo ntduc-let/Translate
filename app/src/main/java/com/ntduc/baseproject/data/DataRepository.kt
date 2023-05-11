@@ -10,12 +10,11 @@ import kotlinx.coroutines.flow.flowOn
 import javax.inject.Inject
 import kotlin.coroutines.CoroutineContext
 
-
-/**
- * Created by TruyenIT
- */
-
-class DataRepository @Inject constructor(private val remoteRepository: RemoteData, private val localRepository: LocalData, private val ioDispatcher: CoroutineContext) : DataRepositorySource {
+class DataRepository @Inject constructor(
+    private val remoteRepository: RemoteData,
+    private val localRepository: LocalData,
+    private val ioDispatcher: CoroutineContext
+) : DataRepositorySource {
 
     override suspend fun requestFrames(): Flow<Resource<DataFrames>> {
         return flow {

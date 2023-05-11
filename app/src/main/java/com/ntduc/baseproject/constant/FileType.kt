@@ -17,7 +17,11 @@ object FileType {
     "heif"
   )
   val IMAGE = arrayOf(
-    *IMAGE_JPG, *IMAGE_PNG, *IMAGE_GIF, *IMAGE_BMP, *IMAGE_HEIF
+    *IMAGE_JPG,
+    *IMAGE_PNG,
+    *IMAGE_GIF,
+    *IMAGE_BMP,
+    *IMAGE_HEIF
   )
   val VIDEO_MP4 = arrayOf(
     "mp4"
@@ -35,7 +39,11 @@ object FileType {
     "3gp"
   )
   val VIDEO = arrayOf(
-    *VIDEO_MP4, *VIDEO_MKV, *VIDEO_AVI, *VIDEO_WMV, *VIDEO_3GP
+    *VIDEO_MP4,
+    *VIDEO_MKV,
+    *VIDEO_AVI,
+    *VIDEO_WMV,
+    *VIDEO_3GP
   )
   val AUDIO_MP3 = arrayOf(
     "mp3"
@@ -53,7 +61,11 @@ object FileType {
     "aac"
   )
   val AUDIO = arrayOf(
-    *AUDIO_MP3, *AUDIO_M4A, *AUDIO_AMR, *AUDIO_OGG, *AUDIO_AAC
+    *AUDIO_MP3,
+    *AUDIO_M4A,
+    *AUDIO_AMR,
+    *AUDIO_OGG,
+    *AUDIO_AAC
   )
   val DOCUMENT_PDF = arrayOf(
     "pdf"
@@ -62,16 +74,24 @@ object FileType {
     "txt"
   )
   val DOCUMENT_DOC = arrayOf(
-    "doc", "docx"
+    "doc",
+    "docx"
   )
   val DOCUMENT_XLS = arrayOf(
-    "xls", "xlsx", "csv"
+    "xls",
+    "xlsx",
+    "csv"
   )
   val DOCUMENT_PPT = arrayOf(
-    "ppt", "pptx"
+    "ppt",
+    "pptx"
   )
   val DOCUMENT = arrayOf(
-    *DOCUMENT_PDF, *DOCUMENT_TXT, *DOCUMENT_DOC, *DOCUMENT_XLS, *DOCUMENT_PPT
+    *DOCUMENT_PDF,
+    *DOCUMENT_TXT,
+    *DOCUMENT_DOC,
+    *DOCUMENT_XLS,
+    *DOCUMENT_PPT
   )
   val COMPRESSED_ZIP = arrayOf(
     "zip"
@@ -83,12 +103,19 @@ object FileType {
     "rar"
   )
   val COMPRESSED = arrayOf(
-    *COMPRESSED_ZIP, *COMPRESSED_7ZIP, *COMPRESSED_RAR
+    *COMPRESSED_ZIP,
+    *COMPRESSED_7ZIP,
+    *COMPRESSED_RAR
   )
   val APK = arrayOf(
     "apk"
   )
   val ALL = arrayOf(
-    *IMAGE, *VIDEO, *AUDIO, *DOCUMENT, *COMPRESSED, *APK
+    *IMAGE,
+    *VIDEO,
+    *AUDIO,
+    *DOCUMENT,
+    *COMPRESSED,
+    *APK
   )
 }

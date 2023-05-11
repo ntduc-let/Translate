@@ -1,32 +1,26 @@
 package com.ntduc.baseproject.utils.network
 
-import android.annotation.SuppressLint
 import android.content.Context
 import android.net.ConnectivityManager
-import android.net.NetworkInfo
+import android.net.NetworkCapabilities
 import javax.inject.Inject
-
-/**
- * Created by TruyenIT
- */
 
 /*
 * <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
 */
 class Network @Inject constructor(val context: Context) : NetworkConnectivity {
-    @SuppressLint("MissingPermission")
-    override fun getNetworkInfo(): NetworkInfo? {
-        val cm = context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
-        return cm.activeNetworkInfo
-    }
 
     override fun isConnected(): Boolean {
-        val info = getNetworkInfo()
-        return info != null && info.isConnected
+        val connectivityManager =
+            context.getSystemService(Context.CONNECTIVITY_SERVICE) as ConnectivityManager
+        val network = connectivityManager.activeNetwork ?: return false
+        val capabilities = connectivityManager.getNetworkCapabilities(network) ?: return false
+        return capabilities.hasTransport(NetworkCapabilities.TRANSPORT_WIFI)
+                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_CELLULAR)
+                || capabilities.hasTransport(NetworkCapabilities.TRANSPORT_ETHERNET)
     }
 }
 
 interface NetworkConnectivity {
-    fun getNetworkInfo(): NetworkInfo?
     fun isConnected(): Boolean
 }

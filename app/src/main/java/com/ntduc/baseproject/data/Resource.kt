@@ -1,6 +1,5 @@
 package com.ntduc.baseproject.data
 
-// A generic class that contains data and status about loading this data.
 sealed class Resource<T>(
         val data: T? = null,
         val errorCode: Int? = null

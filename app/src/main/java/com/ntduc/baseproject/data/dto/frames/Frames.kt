@@ -5,9 +5,6 @@ import com.squareup.moshi.Json
 import com.squareup.moshi.JsonClass
 import kotlinx.parcelize.Parcelize
 
-/**
- * Created by TruyenDev on 29/10/2022.
- */
 @JsonClass(generateAdapter = true)
 @Parcelize
 data class Frames(

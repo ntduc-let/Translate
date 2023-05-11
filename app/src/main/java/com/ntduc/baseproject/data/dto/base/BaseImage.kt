@@ -15,4 +15,13 @@ open class BaseImage(
     override var data: String? = null,
     open var height: Long? = null,
     open var width: Long? = null
-) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data), Parcelable
+) : BaseFile(
+    id,
+    title,
+    displayName,
+    mimeType,
+    size,
+    dateAdded,
+    dateModified,
+    data
+), Parcelable

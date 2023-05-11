@@ -1,9 +1,5 @@
 package com.ntduc.baseproject.data.error
 
-/**
- * Created by TruyenIT
- */
-
 class Error(val code: Int, val description: String) {
     constructor(exception: Exception) : this(
         code = DEFAULT_ERROR,

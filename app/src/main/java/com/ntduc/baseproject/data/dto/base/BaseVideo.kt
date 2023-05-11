@@ -21,4 +21,13 @@ open class BaseVideo(
     open var bucketID: Long? = null,
     open var bucketDisplayName: String? = null,
     open var resolution: String? = null
-) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data), Parcelable
+) : BaseFile(
+    id,
+    title,
+    displayName,
+    mimeType,
+    size,
+    dateAdded,
+    dateModified,
+    data
+), Parcelable

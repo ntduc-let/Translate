@@ -16,4 +16,13 @@ open class BaseAudio(
     open var album: String? = null,
     open var artist: String? = null,
     open var duration: Long? = null
-) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data), Parcelable
+) : BaseFile(
+    id,
+    title,
+    displayName,
+    mimeType,
+    size,
+    dateAdded,
+    dateModified,
+    data
+), Parcelable

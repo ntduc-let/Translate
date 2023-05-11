@@ -16,4 +16,13 @@ open class BaseApk(
     override var dateModified: Long? = null,
     override var data: String? = null,
     open var icon: @RawValue Drawable? = null
-) : BaseFile(id, title, displayName, mimeType, size, dateAdded, dateModified, data), Parcelable
+) : BaseFile(
+    id,
+    title,
+    displayName,
+    mimeType,
+    size,
+    dateAdded,
+    dateModified,
+    data
+), Parcelable

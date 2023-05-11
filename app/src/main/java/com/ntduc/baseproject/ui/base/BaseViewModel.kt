@@ -1,13 +1,8 @@
 package com.ntduc.baseproject.ui.base
 
-import com.ntduc.baseproject.usecase.errors.ErrorManager
+import com.ntduc.baseproject.data.error.ErrorManager
 import com.skydoves.bindables.BindingViewModel
 import javax.inject.Inject
-
-
-/**
- * Created by TruyenIT
- */
 
 
 abstract class BaseViewModel : BindingViewModel() {

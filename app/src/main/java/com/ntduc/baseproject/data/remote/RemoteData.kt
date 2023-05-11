@@ -10,16 +10,12 @@ import retrofit2.Response
 import java.io.IOException
 import javax.inject.Inject
 
-
-/**
- * Created by TruyenIT
- */
-
-class RemoteData @Inject
-constructor(private val serviceGenerator: ServiceGenerator, private val networkConnectivity: NetworkConnectivity) : RemoteDataSource {
+class RemoteData @Inject constructor(
+    private val framesService: FramesService,
+    private val networkConnectivity: NetworkConnectivity
+) : RemoteDataSource {
 
     override suspend fun requestFrames(): Resource<DataFrames> {
-        val framesService = serviceGenerator.createService(FramesService::class.java)
         return when (val response = processCall(framesService::fetchFrames)) {
             is DataFrames -> {
                 Resource.Success(data = response)

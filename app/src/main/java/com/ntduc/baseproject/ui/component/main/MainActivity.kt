@@ -13,7 +13,6 @@ import com.permissionx.guolindev.PermissionX
 import com.permissionx.guolindev.request.PermissionBuilder
 import dagger.hilt.android.AndroidEntryPoint
 
-
 @AndroidEntryPoint
 class MainActivity : BaseActivity<ActivityMainBinding>(R.layout.activity_main) {
 
