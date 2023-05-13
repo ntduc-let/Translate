@@ -3,6 +3,7 @@ package com.ntduc.baseproject.di
 import android.app.Application
 import androidx.room.Room
 import com.ntduc.baseproject.data.local.db.AppDatabase
+import com.ntduc.baseproject.data.local.db.dao.BaseAppDao
 import com.ntduc.baseproject.data.local.db.dao.BaseFileDao
 import dagger.Module
 import dagger.Provides
@@ -26,7 +27,13 @@ class DatabaseModule {
 
     @Provides
     @Singleton
-    internal fun providePhotoDao(appDatabase: AppDatabase): BaseFileDao {
+    internal fun provideBaseFileDao(appDatabase: AppDatabase): BaseFileDao {
         return appDatabase.baseFileDao
+    }
+
+    @Provides
+    @Singleton
+    internal fun provideBaseAppDao(appDatabase: AppDatabase): BaseAppDao {
+        return appDatabase.baseAppDao
     }
 }

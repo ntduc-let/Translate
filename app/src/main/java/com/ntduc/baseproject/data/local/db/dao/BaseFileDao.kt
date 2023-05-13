@@ -14,7 +14,7 @@ interface BaseFileDao {
     fun insert(baseFile: BaseFile)
 
     @Update
-    fun update(photo: BaseFile)
+    fun update(baseFile: BaseFile)
 
     @Delete
     fun delete(baseFile: BaseFile)
@@ -23,8 +23,8 @@ interface BaseFileDao {
     fun deleteAll()
 
     @Query("SELECT * FROM BaseFile")
-    fun loadAll(): MutableList<BaseFile>
+    fun getAll(): MutableList<BaseFile>
 
     @Query("SELECT * FROM BaseFile where id = :baseFileID")
-    fun getBaseFileById(baseFileID: Long): BaseFile?
+    fun getById(baseFileID: Long): BaseFile?
 }

@@ -3,6 +3,7 @@ package com.ntduc.baseproject.data.dto.app
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import androidx.room.Entity
+import androidx.room.Ignore
 import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
@@ -12,8 +13,8 @@ import java.util.UUID
 @Entity(tableName = "BaseApp")
 open class BaseApp(
     open var name: String? = null,
-    @PrimaryKey open var packageName: String? = null,
-    open var icon: @RawValue Drawable? = null,
+    @PrimaryKey open var packageName: String = "",
+    @Ignore open var icon: @RawValue Drawable? = null,
     open var category: String? = null,
     open var dataDir: String? = null,
     open var minSdkVersion: Int? = null,
@@ -25,9 +26,9 @@ open class BaseApp(
     open var firstInstallTime: Long? = null,
     open var lastUpdateTime: Long? = null,
     open var sourceDir: String? = null,
-    open var splitNames: Array<String>? = null,
-    open var splitPublicSourceDirs: Array<String>? = null,
-    open var splitSourceDirs: Array<String>? = null,
+    @Ignore open var splitNames: Array<String>? = null,
+    @Ignore open var splitPublicSourceDirs: Array<String>? = null,
+    @Ignore open var splitSourceDirs: Array<String>? = null,
     open var storageUuid: UUID? = null,
     open var taskAffinity: String? = null,
     open var uid: Int? = null
