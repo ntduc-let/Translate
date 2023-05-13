@@ -2,6 +2,7 @@ package com.ntduc.baseproject.di
 
 import android.content.Context
 import com.ntduc.baseproject.data.local.LocalData
+import com.ntduc.baseproject.data.local.db.dao.BaseFileDao
 import com.ntduc.baseproject.utils.network.Network
 import com.ntduc.baseproject.utils.network.NetworkConnectivity
 import dagger.Module
@@ -18,8 +19,8 @@ import kotlin.coroutines.CoroutineContext
 class AppModule {
     @Provides
     @Singleton
-    fun provideLocalRepository(@ApplicationContext context: Context): LocalData {
-        return LocalData(context)
+    fun provideLocalRepository(@ApplicationContext context: Context, dao: BaseFileDao): LocalData {
+        return LocalData(context, dao)
     }
 
     @Provides

@@ -13,8 +13,8 @@ import android.os.Build
 import android.provider.Settings
 import androidx.core.content.FileProvider
 import com.ntduc.baseproject.constant.FileType
-import com.ntduc.baseproject.data.dto.base.BaseApk
-import com.ntduc.baseproject.data.dto.base.BaseApp
+import com.ntduc.baseproject.data.dto.file.BaseApk
+import com.ntduc.baseproject.data.dto.app.BaseApp
 import com.ntduc.baseproject.utils.file.getFiles
 import java.io.File
 

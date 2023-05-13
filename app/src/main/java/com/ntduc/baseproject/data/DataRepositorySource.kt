@@ -1,6 +1,6 @@
 package com.ntduc.baseproject.data
 
-import com.ntduc.baseproject.data.dto.base.BaseFile
+import com.ntduc.baseproject.data.dto.file.BaseFile
 import com.ntduc.baseproject.data.dto.frames.DataFrames
 import kotlinx.coroutines.flow.Flow
 

@@ -5,7 +5,7 @@ import androidx.activity.viewModels
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.ntduc.baseproject.R
 import com.ntduc.baseproject.data.Resource
-import com.ntduc.baseproject.data.dto.base.BaseFile
+import com.ntduc.baseproject.data.dto.file.BaseFile
 import com.ntduc.baseproject.databinding.ActivityDetailBinding
 import com.ntduc.baseproject.ui.adapter.DetailAdapter
 import com.ntduc.baseproject.ui.base.BaseActivity

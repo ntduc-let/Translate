@@ -1,12 +1,10 @@
-package com.ntduc.baseproject.data.dto.base
+package com.ntduc.baseproject.data.dto.file
 
-import android.graphics.drawable.Drawable
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
-import kotlinx.parcelize.RawValue
 
 @Parcelize
-open class BaseApk(
+open class BaseVideo(
     override var id: Long? = null,
     override var title: String? = null,
     override var displayName: String? = null,
@@ -15,7 +13,14 @@ open class BaseApk(
     override var dateAdded: Long? = null,
     override var dateModified: Long? = null,
     override var data: String? = null,
-    open var icon: @RawValue Drawable? = null
+    open var height: Long? = null,
+    open var width: Long? = null,
+    open var album: String? = null,
+    open var artist: String? = null,
+    open var duration: Long? = null,
+    open var bucketID: Long? = null,
+    open var bucketDisplayName: String? = null,
+    open var resolution: String? = null
 ) : BaseFile(
     id,
     title,

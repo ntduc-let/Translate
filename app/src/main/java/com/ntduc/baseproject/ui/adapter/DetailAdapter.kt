@@ -4,8 +4,6 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.MediaMetadataRetriever
-import android.os.SystemClock
-import android.util.Log
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -13,7 +11,7 @@ import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.RecyclerView
 import com.ntduc.baseproject.R
 import com.ntduc.baseproject.constant.FileTypeExtension
-import com.ntduc.baseproject.data.dto.base.BaseFile
+import com.ntduc.baseproject.data.dto.file.BaseFile
 import com.ntduc.baseproject.databinding.ItemDocumentBinding
 import com.ntduc.baseproject.utils.formatBytes
 import com.ntduc.baseproject.utils.loadImg

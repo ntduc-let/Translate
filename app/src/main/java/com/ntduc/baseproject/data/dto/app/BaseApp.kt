@@ -1,15 +1,18 @@
-package com.ntduc.baseproject.data.dto.base
+package com.ntduc.baseproject.data.dto.app
 
 import android.graphics.drawable.Drawable
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 import kotlinx.parcelize.RawValue
-import java.util.*
+import java.util.UUID
 
 @Parcelize
+@Entity(tableName = "BaseApp")
 open class BaseApp(
     open var name: String? = null,
-    open var packageName: String? = null,
+    @PrimaryKey open var packageName: String? = null,
     open var icon: @RawValue Drawable? = null,
     open var category: String? = null,
     open var dataDir: String? = null,

@@ -53,6 +53,9 @@ android {
         viewBinding = true
         dataBinding true
     }
+    kapt {
+        correctErrorTypes true
+    }
 }
 
 dependencies {
@@ -67,6 +70,10 @@ dependencies {
     implementation project(path: ':polygonimageview')
     implementation project(path: ':RecyclerViewSticky')
     implementation project(path: ':ViewPager2Transformer')
+
+    //Room
+    implementation "androidx.room:room-ktx:2.5.1"
+    kapt "androidx.room:room-compiler:2.5.1"
 
     //Hilt
     def hiltVersion = "2.45"

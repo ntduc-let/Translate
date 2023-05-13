@@ -1,11 +1,14 @@
-package com.ntduc.baseproject.data.dto.base
+package com.ntduc.baseproject.data.dto.file
 
 import android.os.Parcelable
+import androidx.room.Entity
+import androidx.room.PrimaryKey
 import kotlinx.parcelize.Parcelize
 
 @Parcelize
+@Entity(tableName = "BaseFile")
 open class BaseFile(
-    open var id: Long? = null,
+    @PrimaryKey open var id: Long? = null,
     open var title: String? = null,
     open var displayName: String? = null,
     open var mimeType: String? = null,

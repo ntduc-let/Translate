@@ -7,7 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.ntduc.baseproject.constant.FileType
 import com.ntduc.baseproject.data.DataRepositorySource
 import com.ntduc.baseproject.data.Resource
-import com.ntduc.baseproject.data.dto.base.BaseFile
+import com.ntduc.baseproject.data.dto.file.BaseFile
 import com.ntduc.baseproject.ui.base.BaseViewModel
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
