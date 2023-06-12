@@ -60,7 +60,7 @@ android {
 
 dependencies {
 
-    implementation 'androidx.core:core-ktx:1.10.0'
+    implementation 'androidx.core:core-ktx:1.10.1'
     implementation 'androidx.appcompat:appcompat:1.6.1'
     implementation 'com.google.android.material:material:1.9.0'
     implementation 'androidx.constraintlayout:constraintlayout:2.1.4'
@@ -76,7 +76,7 @@ dependencies {
     kapt "androidx.room:room-compiler:2.5.1"
 
     //Hilt
-    def hiltVersion = "2.45"
+    def hiltVersion = '2.46.1'
     implementation "com.google.dagger:hilt-android:$hiltVersion"
     kapt "com.google.dagger:hilt-compiler:$hiltVersion"
 
@@ -93,20 +93,20 @@ dependencies {
 //    implementation 'com.google.android.gms:play-services-auth:20.4.0'
 
     // Coroutines kotlin
-    implementation "org.jetbrains.kotlinx:kotlinx-coroutines-core:1.6.4"
+    implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.1'
     implementation "androidx.lifecycle:lifecycle-viewmodel-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-runtime-ktx:2.6.1"
     implementation "androidx.lifecycle:lifecycle-extensions:2.2.0"
 
     //Navigation
-    def nav_version = "2.5.3"
+    def nav_version = "2.6.0"
     implementation("androidx.navigation:navigation-fragment-ktx:$nav_version")
     implementation("androidx.navigation:navigation-ui-ktx:$nav_version")
     implementation("androidx.navigation:navigation-dynamic-features-fragment:$nav_version")
     implementation("androidx.navigation:navigation-compose:$nav_version")
 
     //lottie
-    implementation 'com.airbnb.android:lottie:5.2.0'
+    implementation 'com.airbnb.android:lottie:6.0.1'
 
     //Glide
     api 'com.github.bumptech.glide:glide:4.15.1'
@@ -116,8 +116,8 @@ dependencies {
     implementation 'com.guolindev.permissionx:permissionx:1.7.1'
 
     //Json: https://github.com/square/moshi
-    implementation("com.squareup.moshi:moshi-kotlin:1.14.0")
-    kapt "com.squareup.moshi:moshi-kotlin-codegen:1.14.0"
+    implementation('com.squareup.moshi:moshi-kotlin:1.15.0')
+    kapt 'com.squareup.moshi:moshi-kotlin-codegen:1.15.0'
 
     //retrofit
     implementation 'com.squareup.retrofit2:converter-moshi:2.9.0'
@@ -126,7 +126,7 @@ dependencies {
     implementation 'com.squareup.okhttp3:logging-interceptor:5.0.0-alpha.9'
 
     //media3
-    def media3_version = "1.0.1"
+    def media3_version = "1.0.2"
     implementation "androidx.media3:media3-exoplayer:$media3_version"
     implementation "androidx.media3:media3-session:$media3_version"
     implementation "androidx.media3:media3-common:$media3_version"
@@ -143,7 +143,7 @@ dependencies {
     implementation "com.github.skydoves:bindables:1.1.0"
 
     //Leak Canary: https://square.github.io/leakcanary/
-    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.10'
+    debugImplementation 'com.squareup.leakcanary:leakcanary-android:2.11'
 
     //ADS: https://gitlab.com/proxglobal/android/proxlib/-/tree/multiple_mediation
 //    implementation "prox-lib:prox-utils-multiple-mediation:1.0.10.2"
