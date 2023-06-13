@@ -2,9 +2,9 @@ package com.ntduc.baseproject.utils.view
 
 import android.annotation.TargetApi
 import android.content.Context
-import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.Canvas
+import android.graphics.Color
 import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.Drawable
 import android.os.Build
@@ -22,10 +22,19 @@ import androidx.annotation.UiThread
 import androidx.constraintlayout.widget.ConstraintLayout
 import androidx.constraintlayout.widget.ConstraintSet
 import androidx.core.content.ContextCompat
-import androidx.core.view.*
+import androidx.core.view.GravityCompat
+import androidx.core.view.ViewCompat
+import androidx.core.view.marginBottom
+import androidx.core.view.marginLeft
+import androidx.core.view.marginRight
+import androidx.core.view.marginTop
+import androidx.core.view.setMargins
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.recyclerview.widget.RecyclerView
+import androidx.transition.TransitionManager
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import com.google.android.material.transition.MaterialContainerTransform
+import com.ntduc.baseproject.utils.dp
 
 fun View.visible() {
   this.visibility = View.VISIBLE
@@ -865,17 +874,24 @@ fun <T : View> T.percentHeight(value: Float): T {
   return this
 }
 
+fun View.transformMotionView(view: View, viewGroup: ViewGroup) {
+  val transform = MaterialContainerTransform().apply {
+    this@apply.startView = this@transformMotionView
+    this@apply.endView = view
+    scrimColor = Color.TRANSPARENT
+    endElevation = 10f
+    addTarget(view)
+  }
+
+  TransitionManager.beginDelayedTransition(viewGroup, transform)
+
+  view.visible()
+  this@transformMotionView.invisible()
+}
+
 private fun ConstraintLayout.addConstraints(block: ConstraintSet.() -> Unit) {
   val cs = ConstraintSet()
   cs.clone(this)
   block(cs)
   cs.applyTo(this)
 }
-
-private var Int.dp: Int
-  get() {
-    val metrics = Resources.getSystem().displayMetrics
-    return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, this.toFloat(), metrics)
-      .toInt()
-  }
-  set(_) {}

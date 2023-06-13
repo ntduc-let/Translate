@@ -1,26 +1,27 @@
 package com.ntduc.baseproject.utils
 
-import android.app.NotificationChannel
-import android.app.NotificationManager
-import android.content.Context
-import android.os.Build
 import android.os.Bundle
 import android.view.View
-import androidx.annotation.DrawableRes
 import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.Toolbar
-import androidx.core.app.NotificationCompat
 import androidx.drawerlayout.widget.DrawerLayout
 import androidx.fragment.app.Fragment
-import androidx.navigation.*
+import androidx.navigation.NavController
+import androidx.navigation.NavOptions
+import androidx.navigation.Navigator
+import androidx.navigation.findNavController
+import androidx.navigation.fragment.FragmentNavigatorExtras
 import androidx.navigation.fragment.findNavController
+import androidx.navigation.navOptions
 import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.google.android.material.appbar.CollapsingToolbarLayout
 import com.google.android.material.bottomnavigation.BottomNavigationView
 import com.google.android.material.navigation.NavigationView
+import com.google.android.material.transition.MaterialElevationScale
+import com.google.android.material.transition.MaterialSharedAxis
 import com.ntduc.baseproject.R
 
 fun AppCompatActivity.setupNavigationWithActionBar(
@@ -41,7 +42,8 @@ fun AppCompatActivity.setupNavigationWithActionBar(
 }
 
 fun AppCompatActivity.setupNavigationWithToolBar(
-  navController: NavController, toolbar: Toolbar
+  navController: NavController,
+  toolbar: Toolbar
 ): AppBarConfiguration {
   setSupportActionBar(toolbar)
   val appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -50,7 +52,8 @@ fun AppCompatActivity.setupNavigationWithToolBar(
 }
 
 fun AppCompatActivity.setupNavigationWithToolBar(
-  @IdRes idNavHostFragment: Int, toolbar: Toolbar
+  @IdRes idNavHostFragment: Int,
+  toolbar: Toolbar
 ): AppBarConfiguration {
   setSupportActionBar(toolbar)
   val navController = findNavController(idNavHostFragment)
@@ -60,7 +63,9 @@ fun AppCompatActivity.setupNavigationWithToolBar(
 }
 
 fun setupNavigationWithCollapsingToolbar(
-  navController: NavController, collapsingToolbarLayout: CollapsingToolbarLayout, toolbar: Toolbar
+  navController: NavController,
+  collapsingToolbarLayout: CollapsingToolbarLayout,
+  toolbar: Toolbar
 ): AppBarConfiguration {
   val appBarConfiguration = AppBarConfiguration(navController.graph)
   collapsingToolbarLayout.setupWithNavController(toolbar, navController, appBarConfiguration)
@@ -68,7 +73,9 @@ fun setupNavigationWithCollapsingToolbar(
 }
 
 fun AppCompatActivity.setupNavigationWithCollapsingToolbar(
-  @IdRes idNavHostFragment: Int, collapsingToolbarLayout: CollapsingToolbarLayout, toolbar: Toolbar
+  @IdRes idNavHostFragment: Int,
+  collapsingToolbarLayout: CollapsingToolbarLayout,
+  toolbar: Toolbar
 ): AppBarConfiguration {
   val navController = findNavController(idNavHostFragment)
   val appBarConfiguration = AppBarConfiguration(navController.graph)
@@ -80,9 +87,10 @@ fun AppCompatActivity.setupNavigationWithNavigationBar(
   navController: NavController,
   bottomNavigationView: BottomNavigationView,
   topLevelDestinationIds: Set<Int>,
+  isHaveActionBar: Boolean = false
 ): AppBarConfiguration {
   val appBarConfiguration = AppBarConfiguration(topLevelDestinationIds)
-  setupActionBarWithNavController(navController, appBarConfiguration)
+  if (isHaveActionBar) setupActionBarWithNavController(navController, appBarConfiguration)
   bottomNavigationView.setupWithNavController(navController)
   return appBarConfiguration
 }
@@ -91,10 +99,11 @@ fun AppCompatActivity.setupNavigationWithNavigationBar(
   @IdRes idNavHostFragment: Int,
   bottomNavigationView: BottomNavigationView,
   topLevelDestinationIds: Set<Int>,
+  isHaveActionBar: Boolean = false
 ): AppBarConfiguration {
   val appBarConfiguration = AppBarConfiguration(topLevelDestinationIds)
   val navController = findNavController(idNavHostFragment)
-  setupActionBarWithNavController(navController, appBarConfiguration)
+  if (isHaveActionBar) setupActionBarWithNavController(navController, appBarConfiguration)
   bottomNavigationView.setupWithNavController(navController)
   return appBarConfiguration
 }
@@ -107,13 +116,14 @@ fun AppCompatActivity.setupNavigationWithNavigationDrawer(
   toolbar: Toolbar? = null,
   bottomNavigationView: BottomNavigationView? = null,
   topLevelDestinationIds: Set<Int>? = null,
+  isHaveActionBar: Boolean = false
 ): AppBarConfiguration {
   if (collapsingToolbarLayout == null && toolbar != null) setSupportActionBar(toolbar)
   val appBarConfiguration =
     if (topLevelDestinationIds == null) AppBarConfiguration(navController.graph, drawerLayout)
     else AppBarConfiguration(topLevelDestinationIds, drawerLayout)
   if (collapsingToolbarLayout == null || toolbar == null) {
-    setupActionBarWithNavController(navController, appBarConfiguration)
+    if (isHaveActionBar) setupActionBarWithNavController(navController, appBarConfiguration)
   } else {
     collapsingToolbarLayout.setupWithNavController(toolbar, navController, appBarConfiguration)
   }
@@ -130,6 +140,7 @@ fun AppCompatActivity.setupNavigationWithNavigationDrawer(
   toolbar: Toolbar? = null,
   bottomNavigationView: BottomNavigationView? = null,
   topLevelDestinationIds: Set<Int>? = null,
+  isHaveActionBar: Boolean = false
 ): AppBarConfiguration {
   if (collapsingToolbarLayout == null && toolbar != null) setSupportActionBar(toolbar)
   val navController = findNavController(idNavHostFragment)
@@ -137,7 +148,7 @@ fun AppCompatActivity.setupNavigationWithNavigationDrawer(
     if (topLevelDestinationIds == null) AppBarConfiguration(navController.graph, drawerLayout)
     else AppBarConfiguration(topLevelDestinationIds, drawerLayout)
   if (collapsingToolbarLayout == null || toolbar == null) {
-    setupActionBarWithNavController(navController, appBarConfiguration)
+    if (isHaveActionBar) setupActionBarWithNavController(navController, appBarConfiguration)
   } else {
     collapsingToolbarLayout.setupWithNavController(toolbar, navController, appBarConfiguration)
   }
@@ -156,15 +167,35 @@ fun navigateToDes(
   navController.navigate(idDes, args, navOptions, navigatorExtras)
 }
 
-fun AppCompatActivity.navigateToDes(
-  @IdRes idNavHostFragment: Int,
+fun navigateToDesWithMotionScale(
+  navController: NavController,
   @IdRes idDes: Int,
+  currentFragment: Fragment,
+  startView: View,
   args: Bundle? = null,
   navOptions: NavOptions? = DEFAULT_NAV_OPTION,
   navigatorExtras: Navigator.Extras? = null
 ) {
-  val navController = findNavController(idNavHostFragment)
-  navController.navigate(idDes, args, navOptions, navigatorExtras)
+  currentFragment.setMotionScaleStart()
+  val bundle = (args ?: Bundle()).apply {
+    putInt(ID_START_VIEW_MOTION_SCALE, startView.id)
+  }
+  navController.navigate(idDes, bundle, navOptions, navigatorExtras)
+}
+
+fun navigateToDesWithMotionAxisZ(
+  navController: NavController,
+  @IdRes idDes: Int,
+  currentFragment: Fragment,
+  args: Bundle? = null,
+  navOptions: NavOptions? = DEFAULT_NAV_OPTION,
+  navigatorExtras: Navigator.Extras? = null
+) {
+  currentFragment.setMotionAxisZStart()
+  val bundle = (args ?: Bundle()).apply {
+    putBoolean(IS_MOTION_AXIS_Z, true)
+  }
+  navController.navigate(idDes, bundle, navOptions, navigatorExtras)
 }
 
 fun Fragment.navigateToDes(
@@ -173,8 +204,79 @@ fun Fragment.navigateToDes(
   navOptions: NavOptions? = DEFAULT_NAV_OPTION,
   navigatorExtras: Navigator.Extras? = null
 ) {
+  this.removeMotionStart()
   findNavController().navigate(idDes, args, navOptions, navigatorExtras)
 }
+
+fun Fragment.navigateToDesWithMotionScale(
+  @IdRes idDes: Int,
+  startView: View,
+  args: Bundle? = null,
+  navOptions: NavOptions? = DEFAULT_NAV_OPTION,
+  navigatorExtras: Navigator.Extras? = null
+) {
+  this.setMotionScaleStart()
+  val bundle = (args ?: Bundle()).apply {
+    putInt(ID_START_VIEW_MOTION_SCALE, startView.id)
+  }
+  findNavController().navigate(idDes, bundle, navOptions, navigatorExtras)
+}
+
+fun Fragment.navigateToDesWithMotionItem(
+  @IdRes idDes: Int,
+  startView: View,
+  endTransitionName: String,
+  @IdRes idNavHostFragment: Int,
+  args: Bundle? = null,
+  navOptions: NavOptions? = DEFAULT_NAV_OPTION
+) {
+  this.setMotionScaleStart()
+  val extras = FragmentNavigatorExtras(startView to endTransitionName)
+  val bundle = (args ?: Bundle()).apply {
+    putBoolean(IS_MOTION_ITEM, true)
+    putInt(ID_NAV_HOST_FRAGMENT, idNavHostFragment)
+  }
+  findNavController().navigate(idDes, bundle, navOptions, extras)
+}
+
+fun Fragment.navigateToDesWithMotionAxisZ(
+  @IdRes idDes: Int,
+  args: Bundle? = null,
+  navOptions: NavOptions? = DEFAULT_NAV_OPTION,
+  navigatorExtras: Navigator.Extras? = null
+) {
+  this.setMotionAxisZStart()
+  val bundle = (args ?: Bundle()).apply {
+    putBoolean(IS_MOTION_AXIS_Z, true)
+  }
+  findNavController().navigate(idDes, bundle, navOptions, navigatorExtras)
+}
+
+fun Fragment.removeMotionStart() =
+  this.apply {
+    exitTransition = null
+    reenterTransition = null
+  }
+
+fun Fragment.setMotionScaleStart() =
+  this.apply {
+    exitTransition = MaterialElevationScale(false).apply {
+      duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+    }
+    reenterTransition = MaterialElevationScale(true).apply {
+      duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+    }
+  }
+
+fun Fragment.setMotionAxisZStart() =
+  this.apply {
+    exitTransition = MaterialSharedAxis(MaterialSharedAxis.Z, true).apply {
+      duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+    }
+    reenterTransition = MaterialSharedAxis(MaterialSharedAxis.Z, false).apply {
+      duration = resources.getInteger(R.integer.reply_motion_duration_large).toLong()
+    }
+  }
 
 private val DEFAULT_NAV_OPTION = navOptions {
   anim {
@@ -185,98 +287,7 @@ private val DEFAULT_NAV_OPTION = navOptions {
   }
 }
 
-fun navigateToActionListener(
-  @IdRes idAction: Int, args: Bundle? = null
-): View.OnClickListener {
-  return Navigation.createNavigateOnClickListener(idAction, args)
-}
-
-fun navigateToActionListener(
-  directions: NavDirections
-): View.OnClickListener {
-  return Navigation.createNavigateOnClickListener(directions)
-}
-
-fun AppCompatActivity.createDeepLink(
-  navController: NavController,
-  @IdRes idDes: Int,
-  args: Bundle? = null,
-  title: String,
-  body: String,
-  @DrawableRes icon: Int,
-  idChannel: String,
-  nameChannel: String,
-) {
-  val deeplink =
-    navController.createDeepLink().setDestination(idDes).setArguments(args).createPendingIntent()
-  
-  val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    notificationManager.createNotificationChannel(
-      NotificationChannel(
-        idChannel, nameChannel, NotificationManager.IMPORTANCE_HIGH
-      )
-    )
-  }
-  
-  val builder =
-    NotificationCompat.Builder(this, idChannel).setContentTitle(title).setContentText(body)
-      .setSmallIcon(icon).setContentIntent(deeplink).setAutoCancel(true)
-  notificationManager.notify(0, builder.build())
-}
-
-fun AppCompatActivity.createDeepLink(
-  @IdRes idNavHostFragment: Int,
-  @IdRes idDes: Int,
-  args: Bundle? = null,
-  title: String,
-  body: String,
-  @DrawableRes icon: Int,
-  idChannel: String,
-  nameChannel: String,
-) {
-  val navController = findNavController(idNavHostFragment)
-  val deeplink =
-    navController.createDeepLink().setDestination(idDes).setArguments(args).createPendingIntent()
-  
-  val notificationManager = getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    notificationManager.createNotificationChannel(
-      NotificationChannel(
-        idChannel, nameChannel, NotificationManager.IMPORTANCE_HIGH
-      )
-    )
-  }
-  
-  val builder =
-    NotificationCompat.Builder(this, idChannel).setContentTitle(title).setContentText(body)
-      .setSmallIcon(icon).setContentIntent(deeplink).setAutoCancel(true)
-  notificationManager.notify(0, builder.build())
-}
-
-fun Fragment.createDeepLink(
-  @IdRes idDes: Int,
-  args: Bundle? = null,
-  title: String,
-  body: String,
-  @DrawableRes icon: Int,
-  idChannel: String,
-  nameChannel: String,
-) {
-  val deeplink = findNavController().createDeepLink().setDestination(idDes).setArguments(args)
-    .createPendingIntent()
-  
-  val notificationManager =
-    requireContext().getSystemService(Context.NOTIFICATION_SERVICE) as NotificationManager
-  if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
-    notificationManager.createNotificationChannel(
-      NotificationChannel(
-        idChannel, nameChannel, NotificationManager.IMPORTANCE_HIGH
-      )
-    )
-  }
-  
-  val builder = NotificationCompat.Builder(requireContext(), idChannel).setContentTitle(title)
-    .setContentText(body).setSmallIcon(icon).setContentIntent(deeplink).setAutoCancel(true)
-  notificationManager.notify(0, builder.build())
-}
+const val ID_START_VIEW_MOTION_SCALE = "ID_START_VIEW_MOTION_SCALE"
+const val IS_MOTION_AXIS_Z = "IS_MOTION_AXIS_Z"
+const val IS_MOTION_ITEM = "IS_MOTION_ITEM"
+const val ID_NAV_HOST_FRAGMENT = "ID_NAV_HOST_FRAGMENT"

@@ -2,6 +2,13 @@
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
+    <data>
+
+        <variable
+            name="baseFile"
+            type="com.ntduc.baseproject.data.dto.file.BaseFile" />
+    </data>
+
     <com.google.android.material.card.MaterialCardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
@@ -9,6 +16,7 @@
         android:layout_margin="@dimen/_6sdp"
         android:background="#424242"
         android:foreground="?attr/selectableItemBackground"
+        android:transitionName="@{@string/item_transition_name(baseFile.id)}"
         app:cardBackgroundColor="#fafafa"
         app:cardElevation="4dp">
 

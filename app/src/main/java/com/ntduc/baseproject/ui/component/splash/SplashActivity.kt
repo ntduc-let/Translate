@@ -8,7 +8,7 @@ import androidx.activity.viewModels
 import com.ntduc.baseproject.R
 import com.ntduc.baseproject.databinding.ActivitySplashBinding
 import com.ntduc.baseproject.ui.base.BaseActivity
-import com.ntduc.baseproject.ui.component.main.MainActivity
+import com.ntduc.baseproject.ui.component.navigation.NavigationActivity
 import dagger.hilt.android.AndroidEntryPoint
 
 @SuppressLint("CustomSplashScreen")
@@ -21,7 +21,7 @@ class SplashActivity : BaseActivity<ActivitySplashBinding>(R.layout.activity_spl
         super.addEvent()
 
         Handler(Looper.getMainLooper()).postDelayed({
-            startActivity(Intent(this@SplashActivity, MainActivity::class.java))
+            startActivity(Intent(this@SplashActivity, NavigationActivity::class.java))
             finish()
         }, 5000)
     }

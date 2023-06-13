@@ -4,6 +4,7 @@ import android.annotation.SuppressLint
 import android.content.Context
 import android.graphics.BitmapFactory
 import android.media.MediaMetadataRetriever
+import android.view.View
 import android.view.ViewGroup
 import androidx.lifecycle.findViewTreeLifecycleOwner
 import androidx.lifecycle.lifecycleScope
@@ -30,13 +31,17 @@ class DetailAdapter(
         parent.binding<ItemDocumentBinding>(R.layout.item_document).let(::DocumentViewHolder)
 
     override fun onBindViewHolder(holder: DocumentViewHolder, position: Int) =
-        holder.bindDocument(getItem(position))
+        holder.bind(getItem(position))
 
     inner class DocumentViewHolder constructor(
         private val binding: ItemDocumentBinding
     ) : RecyclerView.ViewHolder(binding.root) {
 
-        fun bindDocument(baseFile: BaseFile) {
+        fun bind(baseFile: BaseFile) {
+            binding.apply {
+                this@apply.baseFile = baseFile
+            }
+
             when (FileTypeExtension.getTypeFile(baseFile.data!!)) {
                 FileTypeExtension.AUDIO -> {
                     val coroutineScope =
@@ -75,6 +80,12 @@ class DetailAdapter(
             binding.txtTitle.text = baseFile.displayName
             binding.txtDescription.text = baseFile.size?.formatBytes()
 
+            binding.root.setOnClickListener {
+                onClickListener?.let {
+                    it(binding.cardView, baseFile)
+                }
+            }
+
             binding.executePendingBindings()
         }
     }
@@ -88,5 +99,11 @@ class DetailAdapter(
             override fun areContentsTheSame(oldItem: BaseFile, newItem: BaseFile): Boolean =
                 oldItem == newItem
         }
+    }
+
+    private var onClickListener: ((View, BaseFile) -> Unit)? = null
+
+    fun setOnClickListener(listener: (View, BaseFile) -> Unit) {
+        onClickListener = listener
     }
 }
