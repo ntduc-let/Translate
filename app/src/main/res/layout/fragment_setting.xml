@@ -6,7 +6,7 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:transitionGroup="true"
-        tools:context=".ui.component.navigation.fragment.HomeFragment">
+        tools:context=".ui.component.navigation.fragment.SettingFragment">
 
         <LinearLayout
             android:id="@+id/linear"
@@ -35,17 +35,18 @@
                 android:layout_margin="8dp"
                 android:text="Go to Home" />
 
-            <Button
-                android:id="@+id/visible_animation"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:layout_margin="8dp"
-                android:text="Visible Animation" />
-
             <View
-                android:id="@+id/view_animation"
+                android:id="@+id/view_animation_1"
                 android:layout_width="match_parent"
                 android:layout_height="300dp"
+                android:layout_margin="8dp"
+                android:background="#1976D2" />
+
+            <View
+                android:id="@+id/view_animation_2"
+                android:layout_width="match_parent"
+                android:layout_height="300dp"
+                android:layout_margin="8dp"
                 android:background="#FBC02D"
                 android:visibility="invisible" />
         </LinearLayout>

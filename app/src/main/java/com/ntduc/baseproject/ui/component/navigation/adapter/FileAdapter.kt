@@ -1,4 +1,4 @@
-package com.ntduc.baseproject.ui.adapter
+package com.ntduc.baseproject.ui.component.navigation.adapter
 
 import android.annotation.SuppressLint
 import android.content.Context
@@ -23,9 +23,9 @@ import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
 
-class DetailAdapter(
+class FileAdapter(
     val context: Context
-) : BindingListAdapter<BaseFile, DetailAdapter.DocumentViewHolder>(diffUtil) {
+) : BindingListAdapter<BaseFile, FileAdapter.DocumentViewHolder>(diffUtil) {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): DocumentViewHolder =
         parent.binding<ItemDocumentBinding>(R.layout.item_document).let(::DocumentViewHolder)

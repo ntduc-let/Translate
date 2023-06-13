@@ -7,9 +7,9 @@ import com.ntduc.baseproject.R
 import com.ntduc.baseproject.data.Resource
 import com.ntduc.baseproject.data.dto.file.BaseFile
 import com.ntduc.baseproject.databinding.FragmentHomeBinding
-import com.ntduc.baseproject.ui.adapter.DetailAdapter
 import com.ntduc.baseproject.ui.base.BaseFragment
 import com.ntduc.baseproject.ui.component.navigation.NavigationViewModel
+import com.ntduc.baseproject.ui.component.navigation.adapter.FileAdapter
 import com.ntduc.baseproject.utils.navigateToDesWithMotionItem
 import com.ntduc.baseproject.utils.observe
 import com.ntduc.baseproject.utils.view.gone
@@ -20,14 +20,14 @@ import dagger.hilt.android.AndroidEntryPoint
 class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
 
     private val viewModel: NavigationViewModel by activityViewModels()
-    private lateinit var detailAdapter: DetailAdapter
+    private lateinit var fileAdapter: FileAdapter
 
     override fun initView() {
         super.initView()
 
-        detailAdapter = DetailAdapter(requireContext())
+        fileAdapter = FileAdapter(requireContext())
         binding.rcv.apply {
-            adapter = detailAdapter
+            adapter = fileAdapter
             layoutManager = LinearLayoutManager(requireContext(), LinearLayoutManager.VERTICAL, false)
         }
     }
@@ -35,7 +35,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
     override fun addEvent() {
         super.addEvent()
 
-        detailAdapter.setOnClickListener { view, item ->
+        fileAdapter.setOnClickListener { view, item ->
             navigateToDesWithMotionItem(R.id.detailFragment, view, getString(R.string.transition_name_detail), R.id.nav_host_fragment)
         }
     }
@@ -71,7 +71,7 @@ class HomeFragment : BaseFragment<FragmentHomeBinding>(R.layout.fragment_home) {
             binding.empty.gone()
             binding.rcv.visible()
         }
-        detailAdapter.submitList(list)
+        fileAdapter.submitList(list)
     }
 
     private fun showLoadingView() {

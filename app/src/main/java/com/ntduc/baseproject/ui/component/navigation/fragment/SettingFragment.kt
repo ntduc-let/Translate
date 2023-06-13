@@ -31,12 +31,12 @@ class SettingFragment : BaseFragment<FragmentSettingBinding>(R.layout.fragment_s
             navigateToDesWithMotionAxisZ(R.id.homeFragment)
         }
 
-        binding.visibleAnimation.setOnClickListener {
-            it.transformMotionView(binding.viewAnimation, binding.linear)
+        binding.viewAnimation1.setOnClickListener {
+            it.transformMotionView(binding.viewAnimation2, binding.linear)
         }
 
-        binding.viewAnimation.setOnClickListener {
-            it.transformMotionView(binding.visibleAnimation, binding.linear)
+        binding.viewAnimation2.setOnClickListener {
+            it.transformMotionView(binding.viewAnimation1, binding.linear)
         }
     }
 }

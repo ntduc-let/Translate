@@ -29,12 +29,6 @@
             android:name=".ui.component.navigation.NavigationActivity"
             android:exported="false" />
         <activity
-            android:name=".ui.component.detail.DetailActivity"
-            android:exported="false" />
-        <activity
-            android:name=".ui.component.main.MainActivity"
-            android:exported="false" />
-        <activity
             android:name=".ui.component.splash.SplashActivity"
             android:exported="true"
             android:theme="@style/SplashTheme">
