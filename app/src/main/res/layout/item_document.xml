@@ -6,7 +6,7 @@
 
         <variable
             name="baseFile"
-            type="com.ntduc.baseproject.data.dto.file.BaseFile" />
+            type="com.ntduc.android.apps.translate.data.dto.file.BaseFile" />
     </data>
 
     <com.google.android.material.card.MaterialCardView

@@ -6,14 +6,14 @@
 
     <fragment
         android:id="@+id/detailFragment"
-        android:name="com.ntduc.baseproject.ui.component.navigation.fragment.DetailFragment"
+        android:name="com.ntduc.android.apps.translate.ui.component.navigation.fragment.DetailFragment"
         android:label="DetailFragment" />
     <fragment
         android:id="@+id/settingFragment"
-        android:name="com.ntduc.baseproject.ui.component.navigation.fragment.SettingFragment"
+        android:name="com.ntduc.android.apps.translate.ui.component.navigation.fragment.SettingFragment"
         android:label="SettingFragment" />
     <fragment
         android:id="@+id/homeFragment"
-        android:name="com.ntduc.baseproject.ui.component.navigation.fragment.HomeFragment"
+        android:name="com.ntduc.android.apps.translate.ui.component.navigation.fragment.HomeFragment"
         android:label="HomeFragment" />
 </navigation>

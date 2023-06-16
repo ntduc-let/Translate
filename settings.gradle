@@ -27,7 +27,7 @@ dependencyResolutionManagement {
         }
     }
 }
-rootProject.name = "Base Project"
+rootProject.name = "Translate"
 include ':app'
 include ':RecyclerViewSticky'
 include ':ViewPager2Transformer'

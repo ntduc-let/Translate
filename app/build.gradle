@@ -13,11 +13,11 @@ plugins {
 }
 
 android {
-    namespace 'com.ntduc.baseproject'
+    namespace 'com.ntduc.android.apps.translate'
     compileSdk 33
 
     defaultConfig {
-        applicationId "com.ntduc.baseproject"
+        applicationId "com.ntduc.android.apps.translate"
         minSdk 24
         targetSdk 33
         versionCode 1
